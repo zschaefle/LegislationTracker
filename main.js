@@ -1,23 +1,22 @@
-const IN = "bills.txt"
+const IN = "bills.txt";
+const OUT = "output.txt";
 
 const parseString = require('xml2js').parseString;
 const rp = require('request-promise');
 const fs = require('fs');
 const url = 'http://www.govinfo.gov/bulkdata/BILLSTATUS/';
 
-async function main(){
-   console.log(1)
-   await sleep(1000)
-   console.log(2)
-}
-function sleep(ms){
-    return new Promise(resolve=>{
-        setTimeout(resolve,ms)
-    })
-}
+var bills = [];
 
 function printData(b) {
 	var s = "";
+	if (b.url) {
+		s += 'Data from: ' + b.url + '\n';
+	}
+	if (b.err) {
+		s += b.err;
+		return s;
+	}
 	if (b.num) {
 		s += 'Bill ' + b.num + ', ';
 	}
@@ -59,25 +58,17 @@ function printData(b) {
 	return s;
 }
 
-async function main() {
-	var r = fs.readFileSync(IN).toString().replace(/\r/gi, '').split("\n");
-	for (var i in r) {
-		r[i] = r[i].split(" ");
-	}
-
-	for(var i in r) {
-		var tempURL = url + r[i][0] + '/' + r[i][1] + '/BILLSTATUS-' + r[i][0] + r[i][1] + r[i][2] + '.xml';
-		console.log(tempURL);
+function formBill(billData) {
+	return new Promise(function(resolve, reject) {
+		var tempURL = url + billData[0] + '/' + billData[1] + '/BILLSTATUS-' + billData[0] + billData[1] + billData[2] + '.xml';
 		rp(tempURL)
 		.then(function(html){
 			parseString(html, function(err, result) {
-				console.log('\n======================\n');
 				if (!err) {
-					var data = {};
+					var data = {url: tempURL};
 					var bill = result.billStatus.bill[0];
-					data.num = "" + bill.billNumber[0];
+					data.num = "" + billData[1] + bill.billNumber[0];
 					var potTitles = bill.titles[0].item;
-					//console.log(JSON.stringify(bill));
 					for (var i in potTitles) {
 						if (potTitles[i].titleType[0] === "Display Title") {
 							data.title = potTitles[i].title[0];
@@ -95,7 +86,6 @@ async function main() {
 					if (!data.title) {
 						data.title = bill.title[0];
 					}
-					console.log(data.title);
 					data.initDate = bill.introducedDate[0];
 					data.sponsors = [];
 					for (var i in bill.sponsors){
@@ -105,7 +95,9 @@ async function main() {
 						data.summary = bill.summaries[0].billSummaries[0].item[0].text[0].split(/<.*?>/gi);
 						var temp = "";
 						for (var i in data.summary) {
-							temp += data.summary[i] + " ";
+							if (data.summary[i] != "" && data.summary[i] != " "){
+								temp += data.summary[i] + " ";
+							}
 						}
 						data.summary = temp;
 					}
@@ -119,18 +111,51 @@ async function main() {
 					}
 					data.status = bill.latestAction[0].text[0];
 					data.statusActionDate = bill.latestAction[0].actionDate[0];
-					console.log(printData(data));
+					//console.log(printData(data));
+					console.log("data retrieved for " + data.num);
+					resolve(data);
 				} else {
-					console.dir(err);
+					console.error(err);
+					console.error("= = = See the output file for the url.");
+					resolve({url: tempURL, err: "Unable to be formatted properly."})
 				}
 			})
 		})
 		.catch(function(err){
-			console.log("\nSomething went wrong! Bill:", "congress " + r[i][0] + " " + r[i][1] + r[i][2]);
+			console.error("Error retrieving " + billData[1] + billData[2] + ", see the output file for more details.");
+			resolve({url: tempURL, err: "Unable to get data on this bill, most likely a bad url."});
 		});
-		await sleep(1000);
-		console.log(i);
+	});
+}
+
+async function main() {
+	var r = fs.readFileSync(IN).toString().replace(/\r/gi, '').split("\n");
+	for (var i in r) {
+		r[i] = r[i].split(" ");
 	}
+
+	for(var i in r) {
+		await formBill(r[i]).then(function(bill) {
+			bills[bills.length] = bill;
+		});
+	}
+
+	fs.writeFile(OUT, "\n======================\n", function(err) {
+		if (err) {
+			console.log("Unable to clear the output file. Is it open somewhere else?");
+		} else {
+			for (var i = 0; i < bills.length ; i++) {
+				var content = printData(bills[i]);
+				content += "\n======================\n";
+				fs.appendFile(OUT, content, function(err) {
+					if(err){
+						console.log("Unable to append text to the file. Is it open somewhere else?");
+						console.log(err);
+					}
+				});
+			}
+		}
+	});
 }
 
 main();
