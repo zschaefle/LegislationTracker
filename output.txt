@@ -8,26 +8,12 @@ Assigned to the following committee(s): Appropriations Committee
 The Last Action was: Referred to the House Committee on Appropriations.
 This action was taken: 2019-01-03
 ======================
-Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/s/BILLSTATUS-116s192.xml
-Bill s192, Community and Public Health Programs Extension Act
-First presented by Sen. Alexander, Lamar [R-TN]
-Assigned to the following committee(s): Health, Education, Labor, and Pensions Committee
-The Last Action was: Read twice and referred to the Committee on Health, Education, Labor, and Pensions.
-This action was taken: 2019-01-18
-======================
 Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/hr/BILLSTATUS-116hr2031.xml
 Bill hr2031, PROGRESS for Indian Tribes Act
 First presented by Rep. Haaland, Debra A. [D-NM-1]
 Assigned to the following committee(s): Natural Resources Committee
 The Last Action was: Referred to the Subcommittee for Indigenous Peoples of the United States.
 This action was taken: 2019-04-30
-======================
-Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/hr/BILLSTATUS-116hr1128.xml
-Bill hr1128, Indian Programs Advanced Appropriations Act
-First presented by Rep. McCollum, Betty [D-MN-4]
-Assigned to the following committee(s): Natural Resources Committee
-The Last Action was: Referred to the Subcommittee for Indigenous Peoples of the United States.
-This action was taken: 2019-02-28
 ======================
 Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/s/BILLSTATUS-116s209.xml
 Bill s209, PROGRESS for Indian Tribes Act
@@ -36,6 +22,13 @@ Assigned to the following committee(s): Indian Affairs Committee
 The Last Action was: Placed on Senate Legislative Calendar under General Orders. Calendar No. 73.
 This action was taken: 2019-04-29
 ======================
+Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/hr/BILLSTATUS-116hr1128.xml
+Bill hr1128, Indian Programs Advanced Appropriations Act
+First presented by Rep. McCollum, Betty [D-MN-4]
+Assigned to the following committee(s): Natural Resources Committee
+The Last Action was: Referred to the Subcommittee for Indigenous Peoples of the United States.
+This action was taken: 2019-02-28
+======================
 Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/hr/BILLSTATUS-116hr1135.xml
 Bill hr1135, Indian Health Service Advance Appropriations Act of 2019
 First presented by Rep. Young, Don [R-AK-At Large]
@@ -43,12 +36,12 @@ Assigned to the following committee(s): Natural Resources Committee
 The Last Action was: Referred to the Subcommittee for Indigenous Peoples of the United States.
 This action was taken: 2019-03-13
 ======================
-Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/s/BILLSTATUS-116s229.xml
-Bill s229, Indian Programs Advance Appropriations Act
-First presented by Sen. Udall, Tom [D-NM]
-Assigned to the following committee(s): Budget Committee
-The Last Action was: Read twice and referred to the Committee on the Budget.
-This action was taken: 2019-01-25
+Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/s/BILLSTATUS-116s192.xml
+Bill s192, Community and Public Health Programs Extension Act
+First presented by Sen. Alexander, Lamar [R-TN]
+Assigned to the following committee(s): Health, Education, Labor, and Pensions Committee
+The Last Action was: Read twice and referred to the Committee on Health, Education, Labor, and Pensions.
+This action was taken: 2019-01-18
 ======================
 Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/s/BILLSTATUS-116s336.xml
 Bill s336, Studying the Missing and Murdered Indian Crisis Act of 2019
@@ -57,13 +50,20 @@ Assigned to the following committee(s): Indian Affairs Committee
 The Last Action was: Read twice and referred to the Committee on Indian Affairs.
 This action was taken: 2019-02-05
 ======================
+Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/s/BILLSTATUS-116s229.xml
+Bill s229, Indian Programs Advance Appropriations Act
+First presented by Sen. Udall, Tom [D-NM]
+Assigned to the following committee(s): Budget Committee
+The Last Action was: Read twice and referred to the Committee on the Budget.
+This action was taken: 2019-01-25
+======================
+Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/hr/BILLSTATUS-116hr0.xml
+Unable to get data on this bill, most likely a bad url.
+======================
 Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/hr/BILLSTATUS-116hr2029.xml
 Bill hr2029, Studying the Missing and Murdered Indian Crisis Act of 2019
 First presented by Rep. Gallego, Ruben [D-AZ-7]
 Assigned to the following committee(s): Judiciary Committee
 The Last Action was: Referred to the Subcommittee on Crime, Terrorism, and Homeland Security.
 This action was taken: 2019-05-15
-======================
-Data from: http://www.govinfo.gov/bulkdata/BILLSTATUS/116/hr/BILLSTATUS-116hr0.xml
-Unable to get data on this bill, most likely a bad url.
 ======================
